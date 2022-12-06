@@ -1,0 +1,19 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "MVCServerContext": "<CONNECTION STRING TO YOU DATABASE example: "Server=localhost;Database=cloud;Uid=root;Pwd=">"
+  },
+  "AppSettings": {
+    "Secret": "<SECRET KEY TO GET HASH OF PASSWORD example: "MySecretKey">",
+    "Microsoft.AspNetCore": "Warning",
+    "CloudAbsolutePath": "<STORAGE DIRECTORY example: "D:\\CLOUDSTORAGE\\">",
+    "publicIpAddress": "<YOUR PUBLIC IP ADDRESS example: "124.44.65.198">"
+  }
+
+}
