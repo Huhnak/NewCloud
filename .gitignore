@@ -1,0 +1,8 @@
+2CliClient/
+CliClient/
+CliServer/
+CliServer2/
+CloudLibrary/
+MVCServer/
+test/
+APIServer/appsettings.json
