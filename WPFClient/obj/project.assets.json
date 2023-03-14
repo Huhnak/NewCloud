@@ -57,11 +57,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\Visual Studio\\NewCloud\\WPFClient\\WPFClient.csproj",
+      "projectUniqueName": "D:\\Projects\\GitHub\\NewCloud\\WPFClient\\WPFClient.csproj",
       "projectName": "WPFClient",
-      "projectPath": "E:\\Projects\\Visual Studio\\NewCloud\\WPFClient\\WPFClient.csproj",
+      "projectPath": "D:\\Projects\\GitHub\\NewCloud\\WPFClient\\WPFClient.csproj",
       "packagesPath": "C:\\Users\\Huhna\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\Visual Studio\\NewCloud\\WPFClient\\obj\\",
+      "outputPath": "D:\\Projects\\GitHub\\NewCloud\\WPFClient\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Huhna\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -114,7 +114,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

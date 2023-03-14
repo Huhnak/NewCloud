@@ -2892,11 +2892,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\Visual Studio\\NewCloud\\APIServer\\APIServer.csproj",
+      "projectUniqueName": "D:\\Projects\\GitHub\\NewCloud\\APIServer\\APIServer.csproj",
       "projectName": "APIServer",
-      "projectPath": "E:\\Projects\\Visual Studio\\NewCloud\\APIServer\\APIServer.csproj",
+      "projectPath": "D:\\Projects\\GitHub\\NewCloud\\APIServer\\APIServer.csproj",
       "packagesPath": "C:\\Users\\Huhna\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\Visual Studio\\NewCloud\\APIServer\\obj\\",
+      "outputPath": "D:\\Projects\\GitHub\\NewCloud\\APIServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Huhna\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2991,7 +2991,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

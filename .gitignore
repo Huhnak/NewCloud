@@ -1,3 +1,4 @@
+bin/
 2CliClient/
 CliClient/
 CliServer/
@@ -6,3 +7,4 @@ CloudLibrary/
 MVCServer/
 test/
 APIServer/appsettings.json
+.vs/

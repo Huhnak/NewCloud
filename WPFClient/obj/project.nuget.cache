@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cONo0gwnwwqcuTs1jbqVm7ozi6RAtk62EoE4CmketnXOmtAdUWbUXLwias20LbhTAt586oDDTgWDaMWLNHXB9A==",
+  "dgSpecHash": "oslh7+WaqpJGXYHZyfT4IYEX+qpzWzsISTIRsbjtMnDjm74JqSnYQu6aaUvil6Wh5BVP/47cQg2lKa9yZEgjzA==",
   "success": true,
-  "projectFilePath": "E:\\Projects\\Visual Studio\\NewCloud\\WPFClient\\WPFClient.csproj",
+  "projectFilePath": "D:\\Projects\\GitHub\\NewCloud\\WPFClient\\WPFClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Huhna\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
