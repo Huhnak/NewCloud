@@ -1,5 +1,6 @@
 ﻿using APIServer.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace APIServer.Services;
 
@@ -10,6 +11,6 @@ public interface IFileService
     void DeleteDirectoryNotRecursively(DirectoryDelete directoryDelete, HttpContext httpContext);
     void DeleteDirectoryRecursively(DirectoryDelete directoryDelete, HttpContext httpContext);
     void CreateDirectory(DirectoryPathModel directoryCreate, HttpContext httpContext);
-    DirectoryTree GetDirectoriesTree(HttpContext httpContext);
+    string GetDirectoriesTree(HttpContext httpContext);
     FileStreamResult GetFileByDirectory(FileForm fileForm, HttpContext httpContext);
 }

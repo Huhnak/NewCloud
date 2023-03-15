@@ -4,6 +4,7 @@ using APIServer.Models;
 using APIServer.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System.Text;
 using System.Text.Json;
 
@@ -68,9 +69,9 @@ public class FileManagerController : ControllerBase
     [Authorize]
     public IActionResult GetDirectoriesTree()
     {
-        DirectoryTree directoriesTree = _fileService.GetDirectoriesTree(HttpContext);
+        string directoriesTree = _fileService.GetDirectoriesTree(HttpContext);
         var json = JsonSerializer.Serialize(directoriesTree);
-        return Ok(json);
+        return Ok(directoriesTree);
     }
     [HttpPost("getFileByDirectory")]
     [DisableRequestSizeLimit]

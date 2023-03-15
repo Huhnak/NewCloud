@@ -33,7 +33,8 @@ public class FileService : IFileService
     }
     public void UploadFiles(FilesForm filesForm, HttpContext httpContext)
     {
-        checkDirectoryCorrectness(filesForm.Path);
+        if (filesForm.Path != "/")
+            checkDirectoryCorrectness(filesForm.Path);
         foreach (IFormFile file in filesForm.Files)
         {
             checkFileNameCorrectness(file.FileName);
@@ -130,6 +131,7 @@ public class FileService : IFileService
     }
     public void DeleteDirectoryNotRecursively(DirectoryDelete directoryDelete, HttpContext httpContext)
     {
+        
         checkDirectoryCorrectness(directoryDelete.DirectoryPath);
 
         User currentUser = (User)httpContext.Items["User"];
@@ -192,22 +194,14 @@ public class FileService : IFileService
             throw new AppException("Directory already exist");
         Directory.CreateDirectory(dirPath);
     }
-    public DirectoryTree GetDirectoriesTree(HttpContext httpContext)
+    public string GetDirectoriesTree(HttpContext httpContext)
     {
         User currentUser = (User)httpContext.Items["User"];
         DirectoryInfo userDirectory = new DirectoryInfo(Path.Combine(_appSettings.CloudAbsolutePath, currentUser.Id.ToString()));
 
-        DirectoryTree directoryTree = new DirectoryTree();
+        var result = getDirectory(userDirectory).ToString();
 
-        directoryTree.Files = _context.DBFile.Where(f => f.UserId == currentUser.Id).ToList();
-        directoryTree.Directories = new List<string>();
-        //var alreadyExistsDirectories = directoryTree.Files.Select(f => f.LocalPath).Distinct().ToList();
-        foreach (var item in userDirectory.GetDirectories("*", SearchOption.AllDirectories))
-        {
-            var tmpPath = Path.GetRelativePath(userDirectory.FullName, item.FullName).Replace("\\","/")+"/";
-            directoryTree.Directories.Add(tmpPath);
-        }
-        return directoryTree; 
+        return result; 
     }
     public FileStreamResult GetFileByDirectory(FileForm fileForm, HttpContext httpContext)
     {
@@ -264,5 +258,13 @@ public class FileService : IFileService
         if (!regex.IsMatch(fileName) || fileName.Length > 232)
             return false;
         return true;
+    }
+    private JToken getDirectory(DirectoryInfo directory)
+    {
+        return JToken.FromObject(new
+        {
+            directory = directory.EnumerateDirectories().ToDictionary(x => x.Name, x => getDirectory(x)),
+            file = directory.EnumerateFiles().Select(x => x.Name).ToList()
+        });
     }
 }
