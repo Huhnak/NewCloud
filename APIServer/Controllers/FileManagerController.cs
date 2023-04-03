@@ -31,6 +31,15 @@ public class FileManagerController : ControllerBase
         return Ok();
     }
 
+    [HttpPost("download")]
+    [DisableRequestSizeLimit]
+    [Authorize]
+    public IActionResult Download([FromForm] FileForm fileForm)
+    {
+        FileStreamResult fileStreamResult = _fileService.GetFileByDirectory(fileForm, HttpContext);
+        return fileStreamResult;
+    }
+
     [HttpPost("deleteFile")]
     [DisableRequestSizeLimit]
     [Authorize]

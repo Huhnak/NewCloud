@@ -35,14 +35,29 @@ public class FileService : IFileService
     {
         if (filesForm.Path != "/")
             checkDirectoryCorrectness(filesForm.Path);
-        foreach (IFormFile file in filesForm.Files)
+        List<IFormFile> f = filesForm.Files.ToList();
+        
+        foreach (IFormFile file in f)
         {
-            checkFileNameCorrectness(file.FileName);
+            try
+            {
+                checkFileNameCorrectness(file.FileName);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message, file.FileName);
+                filesForm.Files.Remove(file);
+            }
         }
 
         User currentUser = (User)httpContext.Items["User"];
         string userPath = Path.Combine(_appSettings.CloudAbsolutePath, currentUser.Id.ToString());
-        string dirPath = Path.Combine(userPath, filesForm.Path);
+        string dirPath = null;
+        if (filesForm.Path != "/")
+            dirPath = Path.Combine(userPath, filesForm.Path);
+        else
+            dirPath = userPath;
 
         // Есть ли такая папка
         if (!Directory.Exists(dirPath))
@@ -205,8 +220,11 @@ public class FileService : IFileService
     }
     public FileStreamResult GetFileByDirectory(FileForm fileForm, HttpContext httpContext)
     {
-        checkDirectoryCorrectness(fileForm.DirectoryPath);
-        checkFileNameCorrectness(fileForm.FileName);
+        if (fileForm.DirectoryPath != "/")
+            checkDirectoryCorrectness(fileForm.DirectoryPath);
+        else
+            fileForm.DirectoryPath = "";
+        fileForm.FileName = makeFileNameCorrect(fileForm.FileName);
         User currentUser = (User)httpContext.Items["User"];
         string userPath = Path.Combine(_appSettings.CloudAbsolutePath, currentUser.Id.ToString());
         string directoryPath = Path.Combine(userPath, fileForm.DirectoryPath);
@@ -258,6 +276,13 @@ public class FileService : IFileService
         if (!regex.IsMatch(fileName) || fileName.Length > 232)
             return false;
         return true;
+    }
+    private string makeFileNameCorrect(string fileName)
+    {
+        Regex regex = new Regex("[\"\\/:*?<>|]");
+        string replacement = "_";
+        var result = regex.Replace(fileName, replacement);
+        return result;
     }
     private JToken getDirectory(DirectoryInfo directory)
     {
